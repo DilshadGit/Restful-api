@@ -1,0 +1,10 @@
+Django==1.11
+  - pytz [required: Any, installed: 2018.3]
+django-filter==1.1.0
+djangorestframework==3.7.7
+Markdown==2.6.11
+Pillow==5.0.0
+pipdeptree==0.11.0
+  - pip [required: >=6.0.0, installed: 9.0.1]
+setuptools==38.4.0
+wheel==0.30.0

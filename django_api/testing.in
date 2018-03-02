@@ -1,0 +1,125 @@
+django_api $ curl -H 'Accept: application/json; indent=4' -u dilmac:admin000 http://127.0.0.1:8000/users/
+[
+    {
+        "url": "http://127.0.0.1:8000/users/3/",
+        "username": "admin",
+        "email": "admin@gmail.com",
+        "is_staff": true,
+        "groups": []
+    },
+    {
+        "url": "http://127.0.0.1:8000/users/2/",
+        "username": "dilshad",
+        "email": "dilshad@gmail.com",
+        "is_staff": true,
+        "groups": []
+    },
+    {
+        "url": "http://127.0.0.1:8000/users/1/",
+        "username": "dilmac",
+        "email": "",
+        "is_staff": true,
+        "groups": []
+    }
+
+Using httpie
+############
+
+django_api $ http -a dilmac:admin000 http://127.0.0.1:8000/users/
+
+HTTP/1.0 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 333
+Content-Type: application/json
+Date: Fri, 02 Mar 2018 15:14:25 GMT
+Server: WSGIServer/0.2 CPython/3.5.2
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
+[
+    {
+        "email": "admin@gmail.com", 
+        "groups": [], 
+        "is_staff": true, 
+        "url": "http://127.0.0.1:8000/users/3/", 
+        "username": "admin"
+    }, 
+    {
+        "email": "dilshad@gmail.com", 
+        "groups": [], 
+        "is_staff": true, 
+        "url": "http://127.0.0.1:8000/users/2/", 
+        "username": "dilshad"
+    }, 
+    {
+        "email": "", 
+        "groups": [], 
+        "is_staff": true, 
+        "url": "http://127.0.0.1:8000/users/1/", 
+        "username": "dilmac"
+    }
+]
+
+Adding new user attached to group list:
+########################################
+
+/resfulapienv/refulapi/django_api $ http -a dilmac:admin000 http://127.0.0.1:8000/users/
+HTTP/1.0 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 793
+Content-Type: application/json
+Date: Fri, 02 Mar 2018 15:16:50 GMT
+Server: WSGIServer/0.2 CPython/3.5.2
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
+[
+    {
+        "email": "admin@admin.com", 
+        "groups": [
+            "http://127.0.0.1:8000/groups/3/"
+        ], 
+        "is_staff": false, 
+        "url": "http://127.0.0.1:8000/users/6/", 
+        "username": "alan-flask"
+    }, 
+    {
+        "email": "admin@admin.com", 
+        "groups": [
+            "http://127.0.0.1:8000/groups/2/"
+        ], 
+        "is_staff": false, 
+        "url": "http://127.0.0.1:8000/users/5/", 
+        "username": "adam-django"
+    }, 
+    {
+        "email": "test@admin.com", 
+        "groups": [
+            "http://127.0.0.1:8000/groups/1/"
+        ], 
+        "is_staff": true, 
+        "url": "http://127.0.0.1:8000/users/4/", 
+        "username": "python-admin"
+    }, 
+    {
+        "email": "admin@gmail.com", 
+        "groups": [], 
+        "is_staff": true, 
+        "url": "http://127.0.0.1:8000/users/3/", 
+        "username": "admin"
+    }, 
+    {
+        "email": "dilshad@gmail.com", 
+        "groups": [], 
+        "is_staff": true, 
+        "url": "http://127.0.0.1:8000/users/2/", 
+        "username": "dilshad"
+    }, 
+    {
+        "email": "", 
+        "groups": [], 
+        "is_staff": true, 
+        "url": "http://127.0.0.1:8000/users/1/", 
+        "username": "dilmac"
+    }
+]
