@@ -30,7 +30,12 @@ class PostSerializer(serializers.ModelSerializer):
 	language 	= serializers.ChoiceField(choices=LANGUAGE_CHOICES, default='python')
 	style 		= serializers.ChoiceField(choices=STYLE_CHOICES, default='friendly')
 
-	
+
+	class Meta:
+		model = Post
+		fields = '__all__'
+
+
 	def create(self, validated_data):
 		posts = Post.objects.create(**validated_data)
 		return posts

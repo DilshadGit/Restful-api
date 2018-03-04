@@ -1,0 +1,26 @@
+In this Django restful API we have created two apps posts and universities.
+
+The @api_view decorator for working with function based views.
+The posts apps following function base view styles.
+
+The APIView class for working with class-based views.
+The universities apps following class base view style.
+
+Login and Logout Api has been defined in posts.serializers and posts.views and removed
+all django login admin style which shows the user login as resuful api admin. To give
+some permisstion we have used some of the permission styles to tell the user what sort
+of permission the new user can have for example (is_staff, is_superuser, is_active).
+
+request.POST  # Only handles form data.  Only works for 'POST' method.
+request.data  # Handles arbitrary data.  Works for 'POST', 'PUT' and 'PATCH' methods.
+
+
+
+
+
+The posts apps we used @api_view decorator for working with function based views
+
+The universities apps has been created only to use different way restful api unse APIView class-based views.
+
+We will not use JASONResponse in the views anymore.
+

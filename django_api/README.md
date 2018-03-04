@@ -1,3 +1,4 @@
+
 ##  Create Django Restful API
 
 ### Requirements to start 
@@ -18,3 +19,6 @@
 #### I have removed all django admin url and created new files serializers import User model to be able to login from resful api login and logout views. This process will move you out from django admin, user can move to resuful api admin page. You can create the login and logout process in main config directory on the project saperate from the application but I have added to the posts apps. 
 
 #### Next pip install pygments, this package installed for code highlighting
+##### In serializers.py file you can named the template of the class when you rendering HTML like in content html template as dict.
+
+##### pip install httpie to do another test on the terminal look at testing.in

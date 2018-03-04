@@ -123,3 +123,44 @@ X-Frame-Options: SAMEORIGIN
         "username": "dilmac"
     }
 ]
+
+## adding data to post app
+post = Post(title='scripting programmer', author='Dilmac', content='We are looking for contracter', code='test ="hello"\n', language='JavaScript', style='jungel', created='2018-03-03')
+>>> post.save()
+/home/dilmac/DevOP/resfulapienv/lib/python3.5/site-packages/django/db/models/fields/__init__.py:1447: RuntimeWarning: DateTimeField Post.created received a naive datetime (2018-03-03 00:00:00) while time zone support is active.
+  RuntimeWarning)
+>>> post = Post(title='Software Developer', author='Alan', content='We have permenant role', code='display ="hello world"\n', language='AngularJs', style='friendly', created='2018-03-01')
+>>> post.save()
+/home/dilmac/DevOP/resfulapienv/lib/python3.5/site-packages/django/db/models/fields/__init__.py:1447: RuntimeWarning: DateTimeField Post.created received a naive datetime (2018-03-01 00:00:00) while time zone support is active.
+  RuntimeWarning)
+>>> import time
+>>> post = Post(title='Backend developer', author='Rachel', content='We have permenant role and cotractor', code='output ="framework"\n', language='Django', style='Friendly', created='2018-02-21')
+>>> post.save()
+/home/dilmac/DevOP/resfulapienv/lib/python3.5/site-packages/django/db/models/fields/__init__.py:1447: RuntimeWarning: DateTimeField Post.created received a naive datetime (2018-02-21 00:00:00) while time zone support is active.
+  RuntimeWarning)
+>>> post = Post(title='Front-end developer', author='Tom', content='We have need new cotractor', code='output ="framework"\n', language='HTML', style='Friendly', created='2018-02-15')
+>>> post.save()
+/home/dilmac/DevOP/resfulapienv/lib/python3.5/site-packages/django/db/models/fields/__init__.py:1447: RuntimeWarning: DateTimeField Post.created received a naive datetime (2018-02-15 00:00:00) while time
+
+## After Installed httpie
+#############################################
+refulapi $ http http://127.0.0.1:8000/post/1/
+HTTP/1.0 200 OK
+Content-Length: 233
+Content-Type: application/json
+Date: Sun, 04 Mar 2018 01:03:07 GMT
+Server: WSGIServer/0.2 CPython/3.5.2
+X-Frame-Options: SAMEORIGIN
+
+{
+    "author": "Dilmac",
+    "code": "test =\"hello\"\n",
+    "content": "We are looking for contracter",
+    "created": "2018-03-03T00:00:00Z",
+    "id": 1,
+    "language": "JavaScript",
+    "lineone": false,
+    "style": "jungel",
+    "title": "scripting programmer"
+}
+
