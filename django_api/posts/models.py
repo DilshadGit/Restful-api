@@ -3,8 +3,8 @@ from utils.lang import LEXERS, LANGUAGE_CHOICES, STYLE_CHOICES
 
 
 class Post(models.Model):
-	title 		= models.CharField(max_length=80)
-	author 		= models.CharField(max_length=80)
+	title 		= models.CharField(max_length=80, blank=True, null=True)
+	author 		= models.CharField(max_length=80, blank=True, null=True)
 	content 	= models.TextField()
 	code 		= models.TextField()
 	lineone 	= models.BooleanField(default=False)

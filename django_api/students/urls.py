@@ -1,12 +1,12 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from posts import views
+from . import views
 
 
 urlpatterns = [
-    url(r'^list/$', views.post_list),
-    url(r'^(?P<pk>[0-9]+)/$', views.post_detail),
+    url(r'^list/$', views.StudentList.as_view()),
+    url(r'^(?P<pk>[0-9]+)/$', views.StudentDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

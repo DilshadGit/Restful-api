@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from utils.lang import UNI_DEPARTMENT
-
 from .models import University
 
 

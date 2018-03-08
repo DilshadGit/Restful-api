@@ -33,20 +33,13 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-
-## move to next step
-# class PostListView(APIView):
-
-# 	def get(self, request):
-# 		posts = Post.objects.all()
-# 		serializer = PostSerializer(posts, many=True)
-# 		return Response(serializer.data)
-
-# 	def post(self):
-# 		pass
+'''
+We used a POST to the view from clients don't need csrf toek like in django we need to use as
+decorator view @csrf_exempt
+'''
 @csrf_exempt
 def post_list(request):
-
+    # retive all data from db as a list as json objects
     if request.method == 'GET':
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
@@ -63,17 +56,18 @@ def post_list(request):
 
 @csrf_exempt
 def post_detail(request, pk):
-    # retrieve the post with pk
+    
     try:
         post = Post.objects.get(pk=pk)
     # if not exist than 404
     except Post.DoesNotExist:
         return HttpResponse(status=404)
-
+    # retrieve the post with pk
     if request.method == 'GET':
         serializer = PostSerializer(post)
         return JsonResponse(serializer.data)
 
+    # update
     elif request.method == 'PUT':
         data = JSONResponse().parse(request)
         serializer = PostSerializer(post, data=data)
@@ -81,7 +75,7 @@ def post_detail(request, pk):
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer, status=400)
-
+    # delete
     elif request.method == 'DELETE':
         post.delete()
         return HttpResponse(status=204)

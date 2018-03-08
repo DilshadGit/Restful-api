@@ -164,3 +164,6 @@ X-Frame-Options: SAMEORIGIN
     "title": "scripting programmer"
 }
 
+
+## Testing University apps with class based view
+

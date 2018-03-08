@@ -10,7 +10,15 @@ from .models import Post
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = User 
-		fields = ('url', 'username', 'email', 'is_staff', 'groups')
+		fields = (
+				'url',
+				'username', 
+				'email', 
+				'is_staff', 
+				'groups', 
+				'date_joined',
+				'is_superuser'
+			)
 
 
 # we create Group Serializer to tell each user level
@@ -33,7 +41,9 @@ class PostSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Post
-		fields = '__all__'
+		# fields = '__all__' 
+		# or
+		fields = ('id', 'title', 'author', 'content', 'code', 'linenos', 'language', 'style')
 
 
 	def create(self, validated_data):

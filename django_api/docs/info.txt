@@ -11,16 +11,41 @@ all django login admin style which shows the user login as resuful api admin. To
 some permisstion we have used some of the permission styles to tell the user what sort
 of permission the new user can have for example (is_staff, is_superuser, is_active).
 
+serializers in resful api is like forms in django to make some comparasen between them:
+
+In django forms content = forms.CharField(widget=widgets.Textarea)
+In RestFulApi serializers content = serializers.CharField(style={'base_template': 'textarea.html'})
+We also use default, required and max_length in resful api like in django
+Form, ModelForm in django is similar like Serializer and ModelSerializers in Restful API
+
+ModelSerializer is a shortcut for creating serializer class:
+1. Set all fields determined in the class.
+2. Implement create() and update() methods.
+
+
 request.POST  # Only handles form data.  Only works for 'POST' method.
 request.data  # Handles arbitrary data.  Works for 'POST', 'PUT' and 'PATCH' methods.
 
+to tested in terminal we install httpie and run the following command.
+# retrieve all
+http http://127.0.0.1:8000/post/list
+# retrieve detail 
+http http://127.0.0.1:8000/post/2
 
 
+The universities apps we used @api_view decorator for working with function based views
 
-
-The posts apps we used @api_view decorator for working with function based views
-
-The universities apps has been created only to use different way restful api unse APIView class-based views.
+The  apps has been created only to use different way restful api unse APIView class-based views.
 
 We will not use JASONResponse in the views anymore.
 
+The class base view API will does the following bellow: 
+- API Endpoint
+	Retrieve from db
+	Create, List and Search
+- HTTP methods
+	GET, POST< PUT< DELETE and PATCH
+
+- Data Types and Validate
+	JSON => serializer
+	Validate => serializer
