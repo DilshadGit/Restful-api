@@ -10,13 +10,11 @@ class Post(models.Model):
 	lineone 	= models.BooleanField(default=False)
 	language 	= models.CharField(max_length=100, choices=LANGUAGE_CHOICES, default='python')
 	style 		= models.CharField(max_length=100, choices=STYLE_CHOICES, default='friendly')
-	# image = models.ImageField()
 	created 	= models.DateTimeField(auto_now_add=True)
 
 
 	class Meta:
 		ordering = ('created',)
-		# fields = ('id', 'title', 'author', 'content', 'code', 'lineone', 'language', 'style')
 
 	def __str__(self):
 		return self.title
