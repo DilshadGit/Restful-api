@@ -1,4 +1,5 @@
 from django.http import Http404
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -54,6 +55,8 @@ from .serializers import StudentSerializer
 
 
 # to use mixins 
+from django.db.models import Q
+
 from rest_framework import mixins
 from rest_framework import generics
 
@@ -61,6 +64,18 @@ from rest_framework import generics
 class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
 	queryset = Student.objects.all()
 	serializer_class = StudentSerializer
+
+	# search field 
+	filter_fields = ('name', 'student_id', 'course_title')
+
+	def get_search(self):
+		query = self.request.GET.get('q')
+		if query is not None:
+			qs = qs.filter(Q(name__icontains=query) |
+							Q(course_title__icontains=query) |
+							Q(student_id__incontains=query)).distinct()
+		return  qs
+
 
 	def get(self, request, *args, **kwargs):
 		return self.list(request, *args, **kwargs)
@@ -82,6 +97,9 @@ class StudentDetail(mixins.RetrieveModelMixin,
 		return self.retrieve(request, *args, **kwargs)
 
 	def put(self, request, *args, **kwargs):
+		return self.update(request, *args, **kwargs)
+
+	def patch(self, request, *args, **kwargs):
 		return self.update(request, *args, **kwargs)
 
 	def delete(self, request, *args, **kwargs):

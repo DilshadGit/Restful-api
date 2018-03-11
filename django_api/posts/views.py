@@ -33,6 +33,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
+
 '''
 We used a POST to the view from clients don't need csrf toek like in django we need to use as
 decorator view @csrf_exempt
